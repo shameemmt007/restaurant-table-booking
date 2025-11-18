@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ restaurant.name }} | Easy Dinner{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/resto_detail.css' %}">
+<style>
+  .default-banner { display: none !important; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="main">
+  <div class="details">
+    <img src="/restrobook/{{ restaurant.img }}" alt="{{ restaurant.name }}">
+    <h2>{{ restaurant.name }}</h2>
+    <p class="desc">{{ restaurant.description }}</p>
+    <p class="loc"><strong>Location:</strong> {{ restaurant.location }}</p>
+  </div>
+
+    <div class="menu-section">
+    <h3>Menu</h3>
+    {% if menus %}
+      <div class="menu-gallery">
+        {% for item in menus %}
+          <img src="/restrobook/{{ item.image }}" alt="Menu image">
+        {% endfor %}
+      </div>
+    {% else %}
+      <p class="text-muted">No menu items available for this restaurant yet.</p>
+    {% endif %}
+  </div>
+
+
+<div class="review-section mt-5">
+  <h3>Reviews</h3>
+
+  {% if reviews %}
+    {% for review in reviews %}
+    <div class="card mb-3 shadow-sm">
+      <div class="card-body">
+        <h6 class="card-title">{{ review.user.username }} 
+          <span class="text-warning">★ {{ review.rating }}/5</span>
+        </h6>
+        <p class="card-text">{{ review.comment }}</p>
+        <p class="text-muted small mb-0">{{ review.created_at|date:"M d, Y - H:i" }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  {% else %}
+    <p class="text-muted">No reviews yet. Be the first to review this restaurant!</p>
+  {% endif %}
+
+
+  {% if user.is_authenticated %}
+  <div class="card mt-4">
+    <div class="card-body">
+      <h5 class="card-title">Leave a Review</h5>
+      <form method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+          <label class="form-label">Rating</label>
+          <select name="rating" class="form-select" required>
+            <option value="5">★★★★★ (5)</option>
+            <option value="4">★★★★☆ (4)</option>
+            <option value="3">★★★☆☆ (3)</option>
+            <option value="2">★★☆☆☆ (2)</option>
+            <option value="1">★☆☆☆☆ (1)</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">Comment</label>
+          <textarea name="comment" class="form-control" rows="3" required placeholder="Write your review..."></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit Review</button>
+      </form>
+    </div>
+  </div>
+  {% else %}
+    <p class="text-muted">You must <a href="{% url 'login_page' %}">log in</a> to leave a review.</p>
+  {% endif %}
+</div>
+
+
+
+
+  
+
+  <div class="bookpage">
+    <a href="{% url 'table_booking' restaurant.id %}" class="book-btn">Book Table</a>
+  </div>
+</div>
+{% endblock %}
+

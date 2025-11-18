@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/restaurant.css' %}">
+{% endblock %}
+
+{% block content %}
+<div class="main">
+  <div class="restaurant">
+    
+    {% for i in restaurant %}
+      <div class="restaurant-item">
+        <a href="{% url 'restaurant_detail' i.id %}">
+      <img src="{{ i.img }}" alt="">
+      </a>
+      <p>{{ i.name }}</p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

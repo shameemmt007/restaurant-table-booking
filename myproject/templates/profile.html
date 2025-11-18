@@ -1,0 +1,62 @@
+{% load static %}
+
+<div class="main">
+  <link rel="stylesheet" href="{% static 'css/profile.css' %}">
+
+  <img src="{{ profile.profile_pic }}" alt="Profile Picture">
+  <h2>{{ profile.user.username }}</h2>
+  <p><strong>Full name:</strong> {{ profile.full_name }}</p>
+  <p><strong>Email:</strong> {{ profile.email }}</p>
+  <p><strong>Address:</strong> {{ profile.addresses }}</p>
+
+  <a href="{% url 'edite_profile' %}">Edit Profile</a>
+
+  <hr>
+  <button id="toggleBookings" class="toggle-btn">view my Bookings</button>
+  <div id="bookingsSection" class="hidden">
+  <h3>Your Bookings</h3>
+
+  {% if bookings %}
+    <table class="booking-table">
+      <thead>
+        <tr>
+          <th>Restaurant</th>
+          <th>Table Number</th>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Guests</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for booking in bookings %}
+        <tr>
+          <td>{{ booking.table.restaurant.name }}</td>
+          <td>{{ booking.table.table_num }}</td>
+          <td>{{ booking.date }}</td>
+          <td>{{ booking.time }}</td>
+          <td>{{ booking.guests }}</td>
+          <td>
+            <span class="status {{ booking.status|lower }}">{{ booking.status }}</span>
+          </td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  {% else %}
+    <p>You have no bookings yet.</p>
+  {% endif %}
+  </div>
+</div>
+
+<script>
+  const toggleBtn = document.getElementById('toggleBookings');
+  const bookingsSection = document.getElementById('bookingsSection');
+
+  toggleBtn.addEventListener('click', () => {
+    bookingsSection.classList.toggle('hidden');
+    toggleBtn.textContent = bookingsSection.classList.contains('hidden')
+      ? 'View My Bookings ⬇'
+      : 'Hide My Bookings ⬆';
+  });
+</script>

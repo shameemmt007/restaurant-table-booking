@@ -1,0 +1,97 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/admin_dashboard.css'%}">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <h2 class="logo">Easy Dinner</h2>
+
+            <ul>
+                <li class="active"><a href="">Dashboard</a></li>
+                <li><a href="">Restaurants</a></li>
+                <li><a href="">Customers</a></li>
+                <li><a href="">Owners</a></li>
+                <li><a href="">Bookings</a></li>
+            </ul>
+
+
+            <div class="logout">
+                <a href="{%url 'logout_page'%}">logout</a>
+            </div>
+        </div>
+
+
+        <div class="content">
+            <h1>Dashboard</h1>
+
+            <div class="cards">
+                <div class="card">
+                    <h3>Total Restaurants</h3>
+                    <p>{{restaurants.count}}</p>
+                </div>
+
+                <div class="card">
+                    <h3>Total Customers</h3>
+                    <p>{{customers.count}}</p>
+                </div>
+
+                <div class="card">
+                    <h3>Total Owners</h3>
+                    <p>{{owners.count}}</p>
+                </div>
+            </div>
+
+
+            <div class="section">
+                <h2>All Restaurants</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Owner</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for r in restaurants %}
+                        <tr>
+                            <td>{{r.name}}</td>
+                            <td>{{r.user}}</td>
+                        </tr>
+                        {% endfor%}
+                    </tbody>
+                </table>
+            </div>
+
+
+            <div class="section">
+                <h2>All Customers</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for c in customers %}
+                        <tr>
+                            <td>{{ c.username }}</td>
+                            <td>{{c.email}}</td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div> 
+    </div>       
+    
+</body>
+</html>
+

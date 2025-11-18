@@ -1,0 +1,52 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/login.css'%}">
+    <title>login & registraction</title>
+</head>
+<body>
+   <form method="post">
+        {% csrf_token %}
+    <div class="login-box">
+        <div class="login-header">
+            <header>Login</header>
+        </div>
+
+        {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+
+        <div class="input-box">
+            <input type="text" name="username" class="input-field" placeholder="User name"> 
+        </div>
+        <div class="input-box">
+            <input type="password" name="password" class="input-field" placeholder="Password"> 
+        </div>
+        <div class="forgot">
+            <section>
+                <input type="checkbox" id="check">
+                <label for="check">Remember me</label>
+            </section>
+            <section>
+                <a href="#">Forgot password</a>
+            </section>
+        </div>
+        <div class="input-submit">
+            <button class="submit-btn" id="submit"></button>
+            <label for="submit">Sign In</label>
+        </div>
+        <div class="sign-up-link">
+            <p>Don't have account? <a href="{%url 'signup'%}">Sign Up</a></p>
+        </div>
+    </div>
+   </form>
+</body>
+</html>

@@ -1,0 +1,10 @@
+.link-book {
+    display: inline-block;
+    padding: 12px;
+    background-color: #ff7a00;
+    color: white;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 6px;
+    transition: 0.3s ease-in-out;
+}

@@ -1,0 +1,39 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="{% static 'css/table_booking.css'%}">
+  <title>Document</title>
+</head>
+<body>
+  <h2>Book a Table at: {{ restaurant.name }}</h2>
+
+<form method="POST">
+  {% csrf_token %}
+  
+  <label for="table">Choose a table:</label>
+  <select name="table" id="table" required>
+    {% for table in tables %}
+      <option value="{{ table.id }}">
+        Table {{ table.table_num }} — Seats: {{ table.seats }}
+      </option>
+    {% endfor %}
+  </select><br><br>
+
+  <label for="guests">Guests:</label>
+  <input type="number" name="guests" id="guests" min="1" required><br><br>
+
+  <label for="date">Date:</label>
+  <input type="date" name="date" id="date" min="{{ today }}" max="{{ max_date }}" required><br><br>
+
+  <label for="time">Time:</label>
+  <input type="time" name="time" id="time" required><br><br>
+
+  <button type="submit">Confirm Booking</button>
+</form>
+</body>
+</html>
+

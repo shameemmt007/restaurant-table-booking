@@ -1,0 +1,8 @@
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/profile_edit.css' %}">
+
+<form method="post" enctype="multipart/form-data">
+{%csrf_token%}
+{{form}}
+<input type="submit">
+</form>

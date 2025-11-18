@@ -1,0 +1,102 @@
+.main {
+    margin: 40px auto;
+    max-width: 500px;
+    padding: 60px;
+    text-align: center;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+    font-family: 'Poppins', sans-serif;
+}
+.main img {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+
+}
+.main table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+.main th, .main td {
+    border: 1px solid black;
+    padding: 10px;
+}
+.main th {
+    background-color: #f4f4f4;
+}
+a {
+    display: inline-block;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-decoration: none;
+    background: #007bff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 6px;
+}
+a:hover {
+  background: #0056b3;
+}
+
+
+
+.toggle-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 15px;
+  transition: background 0.3s ease;
+}
+
+.toggle-btn:hover {
+  background-color: #0056b3;
+}
+
+.hidden {
+  display: none;
+}
+
+.booking-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.booking-table th, .booking-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.booking-table th {
+  background-color: #f8f9fa;
+}
+
+/* Status colors */
+.status.pending {
+  background-color: #fff3cd;
+  color: #856404;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.status.confirmed {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 5px 10px;
+  border-radius: 8px;
+}
+
+.status.cancelled {
+  background-color: #f8d7da;
+  color: #721c24;
+  padding: 5px 10px;
+  border-radius: 8px;
+}

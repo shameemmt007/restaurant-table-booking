@@ -1,0 +1,85 @@
+.header {
+    background-color: white;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.navbar {
+    background-color: transparent !important;
+    color: #333;
+    padding: 10px 0;
+}
+.navbar-brand {
+    color: #ff7f50 !important;
+    font-weight: bold;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+}
+.navbar-brand img {
+    margin-right: 8px;
+}
+.navbar-nav {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+    gap: 20px;
+}
+.nav-link {
+    color: #333 !important;
+    font-weight: 500;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+.nav-link:hover {
+  color: #ff7f50 !important;
+}
+
+.serch {
+    display: flex;
+    align-items: center;
+}
+.serch form {
+    display: flex;
+    align-items: center;
+    background-color: #ecebeb;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 4px 10px;
+    transition: all 0.3s ease;
+}
+.serch form:hover {
+    border-color: #ff7f50;
+}
+.serch input[type="text"] {
+    border: none;
+    outline: none;
+    background: transparent;
+    padding: 5px 8px;
+    width: 180px;
+    font-size: 14px;
+    color: #1e1e1e;
+}
+.serch input::placeholder {
+  color: #868686;
+}
+.serch button {
+    background-color: #ff7f50;
+    border: none;
+    padding: 5px 12px;
+    color: white;
+    font-size: 13px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.3s ease;
+}
+.serch button:hover {
+  background: #ff5a24;
+}
+
+
+
+ 
